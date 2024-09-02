@@ -23,10 +23,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
     if (_formKey.currentState!.validate()) {
       try {
         final UserCredential userCredential =
-            await _auth.createUserWithEmailAndPassword(
-          email: _emailController.text,
-          password: _emailController.text,
-        );
+    await _auth.createUserWithEmailAndPassword(
+  email: _emailController.text,
+  password: _passwordController.text,  // Corrected to use the password controller
+);
+
 
         // If sign in is successful
         if (userCredential.user != null) {
