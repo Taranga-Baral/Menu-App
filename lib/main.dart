@@ -40,6 +40,7 @@ import 'package:final_menu/homepage.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  
 
   if (kIsWeb) {
     await Firebase.initializeApp(

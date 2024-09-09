@@ -1,4 +1,6 @@
 //homepage1 is the page to land after auth
+import 'package:final_menu/Driver_HomePages/first_land_page_after_registration.dart';
+import 'package:final_menu/Driver_initial-auth/initial_auth_field.dart';
 import 'package:final_menu/homepage.dart';
 import 'package:final_menu/login_screen/sign_in_page.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +45,19 @@ class HomePage1 extends StatelessWidget {
             ),
             ElevatedButton(onPressed: (){
               Navigator.push(context, MaterialPageRoute(builder: (context)=> SignInPage()));
-            }, child: const Text("Sign-Out"))
+            }, child: const Text("Sign-Out")),
+            ElevatedButton(
+              onPressed: () {
+               
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DriverHomePage(),
+                  ),
+                );
+              },
+              child: Text('Driver'),
+            ),
           ],
         ),),
     );
