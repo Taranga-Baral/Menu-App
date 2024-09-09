@@ -1,4 +1,5 @@
 import 'package:final_menu/homepage.dart';
+import 'package:final_menu/homepage1.dart';
 import 'package:final_menu/login_screen/sign_up_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -45,7 +46,7 @@ class _SignInPageState extends State<SignInPage> {
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(
                 builder: (context) =>
-                    HomePage()), // Replace with your actual homepage widget
+                    HomePage1()), // Replace with your actual homepage widget
           );
         });
       }
@@ -89,12 +90,14 @@ class _SignInPageState extends State<SignInPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                
-                const Image(
-                  image: NetworkImage(
-                      "https://cdn-icons-png.flaticon.com/512/1847/1847250.png"),
-                  height: 55,
-                  width: 55,
+                Opacity(
+                  opacity: 0.9,
+                  child: const Image(
+                    image: NetworkImage(
+                        "https://i.postimg.cc/kX0t1Hx7/stock-vector-vector-design-of-auto-rickshaw-and-driver-2316837373-removebg-preview.png"),
+                    height: 100,
+                    width: 100,
+                  ),
                 ),
                 const SizedBox(
                   height: 12,

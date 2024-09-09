@@ -30,6 +30,7 @@
 // }
 
 
+import 'package:final_menu/homepage1.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -76,7 +77,7 @@ class AuthWrapper extends StatelessWidget {
 
     // If the user is signed in, navigate to the homepage, otherwise, show the RegistrationPage
     if (user != null) {
-      return HomePage();
+      return HomePage1();
     } else {
       return RegistrationPage();
     }
