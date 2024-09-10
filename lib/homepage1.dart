@@ -3,6 +3,7 @@ import 'package:final_menu/Driver_HomePages/first_land_page_after_registration.d
 import 'package:final_menu/Driver_initial-auth/initial_auth_field.dart';
 import 'package:final_menu/homepage.dart';
 import 'package:final_menu/login_screen/sign_in_page.dart';
+import 'package:final_menu/requestpage/request_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage1 extends StatelessWidget {
@@ -57,6 +58,30 @@ class HomePage1 extends StatelessWidget {
                 );
               },
               child: Text('Driver'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+               
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => RequestPage(),
+                  ),
+                );
+              },
+              child: Text('Request Page'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+               
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DriverAuthPage(),
+                  ),
+                );
+              },
+              child: Text('Proper Driver Page'),
             ),
           ],
         ),),
