@@ -126,15 +126,42 @@ class _DriverHomePageState extends State<DriverHomePage> {
     return (num1?.truncate() ?? 0).compareTo(num2?.truncate() ?? 0);
   }
 
+  // Future<void> _launchPhone(String phoneNumber, String tripId) async {
+  //   final Uri launchUri = Uri(scheme: 'tel', path: phoneNumber);
+  //   if (await canLaunchUrl(launchUri)) {
+  //     await _deleteTrip(tripId);
+  //     await launchUrl(launchUri);
+  //   } else {
+  //     print('Could not launch $launchUri');
+  //   }
+  // }
   Future<void> _launchPhone(String phoneNumber, String tripId) async {
-    final Uri launchUri = Uri(scheme: 'tel', path: phoneNumber);
-    if (await canLaunchUrl(launchUri)) {
-      await _deleteTrip(tripId);
-      await launchUrl(launchUri);
+  // Check if the trip still exists in Firebase
+  try {
+    DocumentSnapshot tripSnapshot = await FirebaseFirestore.instance.collection('trips').doc(tripId).get();
+    
+    if (tripSnapshot.exists) {
+      // Trip exists, proceed with the phone call
+      final Uri launchUri = Uri(scheme: 'tel', path: phoneNumber);
+      if (await canLaunchUrl(launchUri)) {
+        await _deleteTrip(tripId);
+        await launchUrl(launchUri);
+      } else {
+        print('Could not launch $launchUri');
+      }
     } else {
-      print('Could not launch $launchUri');
+      // Trip does not exist, show a message to the user
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("User Already Booked")),
+        );
+      }
     }
+  } catch (e) {
+    print("Error checking trip existence: $e");
   }
+}
+
 
   Future<void> _deleteTrip(String tripId) async {
     try {
